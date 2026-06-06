@@ -1,8 +1,9 @@
-# django-bs-icon-templates
+django-bs-icon-templates
+========================
 
 Django templates for [Bootstrap Icons](https://github.com/twbs/icons). Each SVG is pre-processed so the `width` attribute is removed and `height` becomes a Django template variable (`{{ height|default:16 }}`), letting you control icon size at render time.
 
-## Installation
+### Installation
 
 ```bash
 pip install django-bs-icon-templates
@@ -17,15 +18,15 @@ INSTALLED_APPS = [
 ]
 ```
 
-## Usage
+### Usage
 
-### `{% include %}` directly
+Use `{% include %}` directly in a template:
 
 ```django
 {% include "bs_icon/alarm.svg" with height=24 %}
 ```
 
-### Template tag
+Or as a template tag:
 
 ```django
 {% load bs_icons %}
@@ -35,7 +36,7 @@ INSTALLED_APPS = [
 ```
 
 
-## Updating icons
+### Updating icons
 
 If a newer Bootstrap Icons release is available, re-run the management command:
 
