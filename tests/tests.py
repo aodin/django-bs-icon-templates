@@ -117,6 +117,7 @@ class ParityTests(SimpleTestCase):
         include = render('{% include "bs_icon/alarm.svg" with height=24 %}')
         self.assertEqual(tag, include)
 
+
 class CopyBsIconsTests(SimpleTestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
@@ -161,6 +162,4 @@ class CopyBsIconsTests(SimpleTestCase):
         source.mkdir()
         (source / "myicon.svg").write_text("<svg></svg>")
         self._copy("myicon", source_dir=str(source))
-        self.assertEqual(
-            (self.output_dir / "myicon.svg").read_text(), "<svg></svg>"
-        )
+        self.assertEqual((self.output_dir / "myicon.svg").read_text(), "<svg></svg>")
