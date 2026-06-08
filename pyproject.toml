@@ -1,23 +1,58 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
 name = "django-bs-icon-templates"
-dynamic = ["version"]
 description = "Bootstrap Icons as Django templates for embedded SVGs"
+version = "0.1.1"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 dependencies = [
     "django>=4.0",
 ]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
 
 [project.optional-dependencies]
 dev = ["build", "twine"]
 
-[tool.hatch.version]
-source = "vcs"
+[project.urls]
+Repository = "https://github.com/aodin/django-bs-icon-templates"
 
 [tool.hatch.build.targets.wheel]
 packages = ["bs_icon_templates"]
+exclude = [
+    ".git/",
+    "docs/",
+    "tests/",
+    "uv.lock",
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".git/",
+    "docs/",
+    "tests/",
+    "uv.lock",
+]
+
+[dependency-groups]
+dev = [
+    "twine>=6.2.0",
+]

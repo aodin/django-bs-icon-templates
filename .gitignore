@@ -1,7 +1,9 @@
-.DS_Store
 __pycache__/
 *.py[cod]
 *.egg-info/
 dist/
 build/
 .venv/
+docs/
+uv.lock
+.DS_Store

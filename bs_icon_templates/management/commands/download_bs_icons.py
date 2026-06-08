@@ -56,14 +56,8 @@ class Command(BaseCommand):
         count = self._extract_and_process(zip_bytes, output_dir)
 
         self.stdout.write(
-            self.style.SUCCESS(
-                f"Done. {count} icons written to {output_dir}"
-            )
+            self.style.SUCCESS(f"Done. {count} icons written to {output_dir}")
         )
-
-    # ------------------------------------------------------------------
-    # Helpers
-    # ------------------------------------------------------------------
 
     def _resolve_output_dir(self, raw: str | None) -> Path:
         if raw:
@@ -100,7 +94,11 @@ class Command(BaseCommand):
             for entry in zf.infolist():
                 # Icons live at <root>/icons/*.svg inside the archive
                 parts = Path(entry.filename).parts
-                if len(parts) == 3 and parts[1] == "icons" and parts[2].endswith(".svg"):
+                if (
+                    len(parts) == 3
+                    and parts[1] == "icons"
+                    and parts[2].endswith(".svg")
+                ):
                     raw = zf.read(entry.filename).decode("utf-8")
                     processed = _process_svg(raw)
                     dest = output_dir / parts[2]
